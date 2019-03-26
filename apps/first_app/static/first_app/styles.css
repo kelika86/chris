@@ -1,0 +1,77 @@
+.container{
+    padding: 80px 120px;
+}
+
+.cat {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7; 
+}
+
+.cat:hover {
+    border-color: #f1f1f1;
+}
+
+.carousel-inner img {
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%); /* make all photos black and white */ 
+    width: 100%; /* Set width to 100% */
+    margin: auto;
+}
+  
+.carousel-caption h3 {
+    color: #fff !important;
+}
+  
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+/* navigation 
+/* Add a dark background color with a little bit see-through */ 
+.bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+}
+.bg-1 h3 {
+    color: #fff;
+}
+.bg-1 p {
+    font-style: italic;
+}
+.list-group{
+    color: black;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+}
+.thumbnail {
+    border: white;
+}
+
+.glyphicon {
+    color: white;
+    font-size: 100px, 100px;
+}
+
+
+
+ 
+
+  
+
+
