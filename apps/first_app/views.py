@@ -6,6 +6,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 import bcrypt
 
+
 def chrisgrafil(request):
     return render(request, 'first_app/chrisgrafil.html')
 
@@ -70,4 +71,21 @@ def dashboard(request):
         "user":User.objects.get(id=request.session['user_id']),
     }
     return render(request, 'first_app/dashboard.html', context)
+
+def add(request):
+    if not 'user_id' in request.session:
+        return redirect('/chrisgrafil')
+    if request.method!='POST':
+        return redirect ('/dashboard')
+    Ticket.objects.create(venue=request.POST['venue'], quantity=request.POST['quantity'], loop=request.POST['loop'], purchaser=User.objects.get(id=request.session['user_id']))
+    return redirect ('/confirmation')
+
+def confirmation(request):
+    if not 'user_id' in request.session:
+        return redirect('/chrisgrafil')
+
+    context={
+        "tickets": Ticket.objects.all(),
+    }
+    return render(request, 'first_app/confirmation.html', context)
 
