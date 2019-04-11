@@ -7,6 +7,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 import bcrypt
 
 
+
 def chrisgrafil(request):
     return render(request, 'first_app/chrisgrafil.html')
 
@@ -67,8 +68,9 @@ def logout(request):
 def dashboard(request):
     if not 'user_id' in request.session:
         return redirect('/chrisgrafil')
+    
     context={
-        "user":User.objects.get(id=request.session['user_id']),
+    "user":User.objects.get(id=request.session['user_id']),
     }
     return render(request, 'first_app/dashboard.html', context)
 
@@ -79,13 +81,79 @@ def add(request):
         return redirect ('/dashboard')
     Ticket.objects.create(venue=request.POST['venue'], quantity=request.POST['quantity'], loop=request.POST['loop'], purchaser=User.objects.get(id=request.session['user_id']))
     return redirect ('/confirmation')
+    
 
 def confirmation(request):
     if not 'user_id' in request.session:
         return redirect('/chrisgrafil')
-
+    
     context={
-        "tickets": Ticket.objects.all(),
+        "user":User.objects.get(id=request.session['user_id']),
+        "tickets": Ticket.objects.filter(purchaser=User.objects.get(id=request.session['user_id'])).annotate(total=Sum(F('quantity') * F('price'),  output_field=FloatField())).annotate(tax=ExpressionWrapper(F('quantity') * F('price')*0.0725,  output_field=FloatField())).annotate(total_price=ExpressionWrapper(F('quantity') * F('price') + F('tax'),  output_field=FloatField())),
+        
     }
     return render(request, 'first_app/confirmation.html', context)
 
+def edit(request, tic_id):
+    context={
+        "ticket": Ticket.objects.get(id=tic_id)
+    }
+    return render(request, 'first_app/edit.html', context)
+
+def modify(request, tic_id):
+    if request.method!='POST':
+        return redirect('/dashboard')
+    t=Ticket.objects.get(id=tic_id)
+    t.venue=request.POST['venue']
+    t.quantity=request.POST['quantity']
+    t.loop=request.POST['loop']
+    t.save()
+    return redirect('/confirmation')
+
+def delete(request, tic_id):
+    if not 'user_id' in request.session:
+        return redirect ('/chrisgrafil')
+    Ticket.objects.get(id=tic_id).delete()
+    return redirect ('/confirmation')
+
+def payment(request):
+    context={
+        "tickets": Ticket.objects.filter(purchaser=User.objects.get(id=request.session['user_id'])).annotate(total=Sum(F('quantity') * F('price'),  output_field=FloatField())).annotate(tax=ExpressionWrapper(F('quantity') * F('price')*0.0725,  output_field=FloatField())).annotate(total_price=ExpressionWrapper(F('quantity') * F('price') + F('tax'),  output_field=FloatField())),
+    }
+    return render(request, 'first_app/payment.html', context)
+
+def process(request):
+    if request.method!='POST':
+        return redirect('/payment')
+    error=False
+    print(request.POST)
+    if len(request.POST['full_name'])<2:
+        messages.error(request, "Full name must be greater than 2 characters")
+        error=True
+    if len(request.POST['cc_number'])!=16:
+        messages.error(request, "Credit card must be valid and contain 16 numbers")
+        error=True
+   
+    if len(request.POST['cvc'])!=3:
+        messages.error(request, "CVC must be valid and contain 3 numbers")
+        error=True
+    if error:
+        return redirect('/payment')
+    else:
+        
+        Order.objects.create(full_name=request.POST['full_name'], cc_number=request.POST['cc_number'],exp_date=request.POST['exp_date'], cvc=request.POST['cvc']) 
+
+        return redirect('/checkout')
+
+def checkout(request):
+    context={
+        "user":User.objects.get(id=request.session['user_id']),
+        
+        "tickets": Ticket.objects.filter(purchaser=User.objects.get(id=request.session['user_id'])).annotate(total=Sum(F('quantity') * F('price'),  output_field=FloatField())).annotate(tax=ExpressionWrapper(F('quantity') * F('price')*0.0725,  output_field=FloatField())).annotate(total_price=ExpressionWrapper(F('quantity') * F('price') + F('tax'),  output_field=FloatField())),
+
+        "order":Order.objects.all()
+    }
+    return render(request, 'first_app/checkout.html', context)
+
+def contact(request):
+    return render(request, 'first_app/contact.html')

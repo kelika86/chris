@@ -10,4 +10,11 @@ urlpatterns=[
     url(r'^logout$', views.logout),
     url(r'^add$', views.add),
     url(r'^confirmation$', views.confirmation),
+    url(r'^delete/(?P<tic_id>\d+)$', views.delete),
+    url(r'^edit/(?P<tic_id>\d+)$', views.edit),
+    url(r'^edit/(?P<tic_id>\d+)/confirm$', views.modify),
+    url(r'^payment$', views.payment),
+    url(r'^process$', views.process),
+    url(r'^checkout$', views.checkout),
+    url(r'^contact$', views.contact),
 ]

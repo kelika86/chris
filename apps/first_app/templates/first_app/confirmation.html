@@ -5,16 +5,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+        <title>Confirmation</title>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><h3>Hello {{user.first_name}}!</h3></a>
+                    
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <a class="nav-link" href="/logout">Log Out</a>
+                    <a class="nav-link active" href="/logout">Log Out</a>
                 </ul> 
             </div><!--end of container-fluid-->
         </nav>
@@ -37,19 +37,21 @@
                             <td>{{ticket.quantity}}</td>
                             <td>$25.00 each</td>
                             <td>{{ticket.loop}}</td>
-                            <td>{{ticket.totalPrice}}</td>
+                            <td>${{ticket.total | floatformat:2}}</td>
                     </tr>
+                    
                     <tr>
                         <th colspan="4" class="text-right">Sales Tax</th>
-                        <td class="text-center">£250.00</td>
+                        <td class="text-center">${{ticket.tax | floatformat:2}}</td>
                     </tr>
                     <tr>
+                       
                         <th colspan="4" class="text-right">Total</span></th>
-                        <td class="text-center">£50.00</td>
+                        <td class="text-center">${{ticket.total_price | floatformat:2}}</td>
                     </tr>
                     <tr>
-                        <td><a href="#" class="btn btn-primary">Edit</a><a href="#" class="float-right btn btn-primary">Delete</a></td>
-                        <td colspan="4"><a href="#" class="float-right btn btn-success">Checkout</a></td>
+                        <td><a href="/edit/{{ticket.id}}" class="btn btn-primary">Edit</a><a href="/delete/{{ticket.id}}" class="float-right btn btn-primary">Delete</a></td>
+                        <td colspan="4"><a href="/payment" class="float-right btn btn-success">Checkout</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
