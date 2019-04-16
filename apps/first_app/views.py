@@ -1,12 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from datetime import datetime 
 from . models import *
 import re 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 import bcrypt
-
-
 
 def chrisgrafil(request):
     return render(request, 'first_app/chrisgrafil.html')
@@ -68,7 +66,6 @@ def logout(request):
 def dashboard(request):
     if not 'user_id' in request.session:
         return redirect('/chrisgrafil')
-    
     context={
     "user":User.objects.get(id=request.session['user_id']),
     }
@@ -155,5 +152,6 @@ def checkout(request):
     }
     return render(request, 'first_app/checkout.html', context)
 
-def contact(request):
-    return render(request, 'first_app/contact.html')
+
+
+

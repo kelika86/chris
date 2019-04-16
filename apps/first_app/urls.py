@@ -16,5 +16,4 @@ urlpatterns=[
     url(r'^payment$', views.payment),
     url(r'^process$', views.process),
     url(r'^checkout$', views.checkout),
-    url(r'^contact$', views.contact),
 ]

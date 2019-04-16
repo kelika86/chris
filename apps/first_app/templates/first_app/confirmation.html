@@ -18,8 +18,9 @@
                 </ul> 
             </div><!--end of container-fluid-->
         </nav>
+        <div class="background" style="background-image: url({% static 'img/theatre.jpg' %})">
         <div class="container">
-            <h2>Shopping Cart</h2>
+            <h2 style="color: #e9ecef">Shopping Cart</h2>
             <table class="table table-hover table-bordered">
                 <thead class="thead-light">
                     <tr class="text-center">
@@ -32,7 +33,7 @@
                 </thead>
                 <tbody>
                     {% for ticket in tickets %}
-                    <tr class="text-center">
+                    <tr style="color: #e9ecef" class="text-center">
                         <th scope="row">{{ticket.venue}}</th>
                             <td>{{ticket.quantity}}</td>
                             <td>$25.00 each</td>
@@ -41,23 +42,24 @@
                     </tr>
                     
                     <tr>
-                        <th colspan="4" class="text-right">Sales Tax</th>
+                        <th colspan="4" class="text-right" style="color: #e9ecef">Sales Tax</th>
                         <td class="text-center">${{ticket.tax | floatformat:2}}</td>
                     </tr>
                     <tr>
                        
-                        <th colspan="4" class="text-right">Total</span></th>
+                        <th colspan="4" class="text-right"style="color: #e9ecef">Total</span></th>
                         <td class="text-center">${{ticket.total_price | floatformat:2}}</td>
                     </tr>
                     <tr>
-                        <td><a href="/edit/{{ticket.id}}" class="btn btn-primary">Edit</a><a href="/delete/{{ticket.id}}" class="float-right btn btn-primary">Delete</a></td>
+                        <td><a href="/edit/{{ticket.id}}" class="btn btn-primary">Edit</a><a href="/delete/{{ticket.id}}" class="float-right btn btn-danger">Delete</a></td>
                         <td colspan="4"><a href="/payment" class="float-right btn btn-success">Checkout</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-
+        </div>
         </div><!--end of container-->
+      
     <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

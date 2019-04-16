@@ -25,14 +25,14 @@
                 </ul>
             </div>
         </nav>
-        <div class="content py-5  bg-primary">
+                <div class="background" style="background-image: url({% static 'img/theatre.jpg' %})">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
                         <span class="anchor" id="formPayment"></span>
                         <hr class="my-5">
                 <!-- form card cc payment -->
-                <div class="card card-outline-secondary">
+                
                     <div class="card-body">
                         <h3 class="text-center">Credit Card Payment</h3>
                         <hr>
@@ -86,20 +86,20 @@
                                     <input type="number" name="cvc" class="form-control" placeholder="CVC">
                                 </div>  
                             </div>
-                            <div class="row">
-                                <label class="col-md-12">Amount</label>
+                            <div class="row" style="color:#e9ecef">
+                                <label class="col-md-12"><strong>Amount</strong></label>
                             </div>
                                 <div class="form-inline">
                                     {% for ticket in tickets %}
-                                    <div class="input-group">
-                                        ${{ticket.total_price| floatformat:2}}
+                                    <div class="input-group" style="color:#e9ecef">
+                                        <strong>${{ticket.total_price| floatformat:2}}</strong>
                                         
                                     </div>
                                 </div>
                             <hr>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <a href="/confirmation" class="btn btn-default btn-lg btn-block">Cancel</a>
+                                    <a href="/confirmation" class="btn btn-dark btn-lg btn-block">Cancel</a>
                                 </div>
                                 <div class="col-md-6">
                                     <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
@@ -109,6 +109,7 @@
                     </div>
                 </div><!-- /form card cc payment -->
                 {% endfor %}
+                </div>
         </body>
     <!--bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

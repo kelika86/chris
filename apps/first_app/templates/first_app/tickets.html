@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Log In</title>
+        <title>Tickets</title>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -17,19 +17,19 @@
                         <a class="nav-link" href="/tickets">Tickets</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/contact">Contact</a>
+                        <a class="nav-link" href="mailto:kkamiya0214@gmail.com">Contact</a>
                     </li>
                 </ul>
             </div>
         </nav> 
-        <div class="back-img" style="background-image: url({% static 'img/catone.jpg' %})">
+        <div class="background" style="background-image: url({% static 'img/microphone.jpg' %})">
         <div class="container">
             <h1 class=text-center>Tickets</h1>
             {% if messages %}
                 {% for message in messages %}
-                <div class="alert alert-info p-2 pb-3">
-                        <a class="close font-weight-normal initialism" data-dismiss="alert" href="#"><samp>×</samp></a> 
-                        {{message}}
+                <div class="alert alert-danger p-2 pb-3">
+                    <a class="close font-weight-normal initialism" data-dismiss="alert" href="#"><samp>×</samp></a> 
+                    {{message}}
                 </div>
                 {% endfor %}
             {% endif %}
@@ -63,7 +63,7 @@
                         <label class="form-check-label" for="loop">Please check if hearing loop is requested</label>
                         <small id="hearingloop" class="form-text text-muted">Designed for hearing aid and cochlear implant users accessibility</small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" value="/tickets" class="btn btn-dark">Submit</button>
                     </form>
                 </div>
         <!--end of register-->
@@ -79,12 +79,12 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
             </div><!--end of row-->
         
         </div><!--end of container-->
-    </div><!--end of background image-->
+        </div><!--end of background image-->
 
         <!--bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
