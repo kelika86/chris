@@ -4,6 +4,7 @@ from . import views
 urlpatterns=[
     url(r'^chrisgrafil$', views.chrisgrafil),
     url(r'^tickets$', views.tickets),
+    url(r'^performances$', views.performances),
     url(r'^register$', views.register),
     url(r'^dashboard$', views.dashboard),
     url(r'^login$', views.login),
@@ -16,4 +17,5 @@ urlpatterns=[
     url(r'^payment$', views.payment),
     url(r'^process$', views.process),
     url(r'^checkout$', views.checkout),
+    url(r'^contact$', views.contact),
 ]

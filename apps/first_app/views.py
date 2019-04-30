@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
+from django.core.mail import EmailMessage
+
+from django.conf import settings
+import os
 from datetime import datetime 
 from . models import *
 import re 
@@ -11,6 +15,9 @@ def chrisgrafil(request):
 
 def tickets(request):
     return render(request, 'first_app/tickets.html')
+
+def performances(request):
+    return render(request, 'first_app/performances.html')
 
 def register(request):
     if request.method!='POST':
@@ -75,19 +82,18 @@ def add(request):
     if not 'user_id' in request.session:
         return redirect('/chrisgrafil')
     if request.method!='POST':
-        return redirect ('/dashboard')
-    Ticket.objects.create(venue=request.POST['venue'], quantity=request.POST['quantity'], loop=request.POST['loop'], purchaser=User.objects.get(id=request.session['user_id']))
-    return redirect ('/confirmation')
-    
-
+        messages.error(request, 'Please select the following options')
+        return redirect('/dashboard')
+    else:
+        Ticket.objects.create(venue=request.POST['venue'], quantity=request.POST['quantity'], loop=request.POST['loop'], purchaser=User.objects.get(id=request.session['user_id']))
+        return redirect ('/confirmation')
+     
 def confirmation(request):
     if not 'user_id' in request.session:
         return redirect('/chrisgrafil')
-    
     context={
         "user":User.objects.get(id=request.session['user_id']),
         "tickets": Ticket.objects.filter(purchaser=User.objects.get(id=request.session['user_id'])).annotate(total=Sum(F('quantity') * F('price'),  output_field=FloatField())).annotate(tax=ExpressionWrapper(F('quantity') * F('price')*0.0725,  output_field=FloatField())).annotate(total_price=ExpressionWrapper(F('quantity') * F('price') + F('tax'),  output_field=FloatField())),
-        
     }
     return render(request, 'first_app/confirmation.html', context)
 
@@ -138,8 +144,7 @@ def process(request):
         return redirect('/payment')
     else:
         
-        Order.objects.create(full_name=request.POST['full_name'], cc_number=request.POST['cc_number'],exp_date=request.POST['exp_date'], cvc=request.POST['cvc']) 
-
+        Order.objects.create(full_name=request.POST['full_name'], cc_number=request.POST['cc_number'],exp_date=request.POST['exp_date'], cvc=request.POST['cvc'])
         return redirect('/checkout')
 
 def checkout(request):
@@ -151,6 +156,31 @@ def checkout(request):
         "order":Order.objects.all()
     }
     return render(request, 'first_app/checkout.html', context)
+
+def contact(request):
+    if request.method == 'POST':
+        error=False
+        if not EMAIL_REGEX.match(request.POST['from_email']):
+            messages.error(request, "Please enter proper email")
+            error=True
+        if len(request.POST['message'])<2:
+            messages.error(request, "Please enter message")
+            error=True    
+        else:
+            message=request.POST.get('message')
+            from_email=request.POST.get('from_email')
+
+            email = EmailMessage(
+                subject='Contact Form',
+                body=message,
+                from_email=settings.EMAIL_HOST_USER,
+                to=[settings.EMAIL_HOST_USER],
+                reply_to=[from_email]
+            )
+            email.send(fail_silently=False)
+
+            messages.success(request, "Thank you for your message! We will reply soon.")
+    return render(request, 'first_app/contact.html')
 
 
 

@@ -18,6 +18,7 @@ class Ticket(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
+
 class Order(models.Model):
     full_name=models.CharField(max_length=100)
     cc_number=models.PositiveIntegerField()
@@ -26,6 +27,10 @@ class Order(models.Model):
     buyers=models.ManyToManyField(Ticket, related_name="bought_tickets")
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+
+
+
+
     
     
    

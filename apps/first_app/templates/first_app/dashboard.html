@@ -14,6 +14,7 @@
                     <a class="navbar-brand" href="#"><h3>Hello {{user.first_name}}!</h3></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
+                    
                     <a class="nav-link active" href="/logout">Log Out</a>
                 </ul> 
             </div><!--end of container-fluid-->
@@ -25,7 +26,7 @@
                         <div class="img-thumbnail">
                             <h4><strong>San Bernardino</strong></h4>
                             <img src="{% static 'img/sb.jpeg' %}" alt="sanbernardino" width="260" height="275">
-                            <h5><strong>Sunday, 25 August 2019</strong></h5>
+                            <h5><strong>Saturday, 10 August 2019</strong></h5>
                             <p>Ontario Improv: 4555 Mills Cir</p>
                             <p>Ontario, CA, 91764</p>
                         </div>
@@ -34,7 +35,7 @@
                         <div class="img-thumbnail">
                             <h4><strong>Los Angeles</strong></h4>
                             <img src="{% static 'img/losangelesshow.jpg' %}" alt="losangelesshow" width="260" height="275">
-                            <h5><strong>Sunday, 25 August 2019</strong></h5>
+                            <h5><strong>Saturday, 17 August 2019</strong></h5>
                             <p>The Ice House: 24 N Mentor Ave.</p>
                             <p>Pasadena, CA, 91106</p>
                         </div>
@@ -43,7 +44,7 @@
                         <div class="img-thumbnail">
                             <h4><strong>Riverside</strong></h4>
                             <img src="{% static 'img/missioninn.jpg' %}" alt="missioninn" width="260" height="275">
-                            <h5><strong>Sunday, 25 August 2019</strong></h5>
+                            <h5><strong>Saturday, 24 August 2019</strong></h5>
                             <p>Mission Inn: 3649 Mission Inn Ave.</p>
                             <p>Riverside, CA, 92501</p>
                         </div>
@@ -54,8 +55,16 @@
                 <form action="/add" method="POST">
                     {% csrf_token %}
                     <div class="text-center">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger p-2 pb-3">
+                                <a class="close font-weight-normal initialism" data-dismiss="alert" href="#"><samp>×</samp></a> 
+                                {{message}}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
                         <label><strong>Location of Venue:</strong></label>
-                        <select class="form-control" name="venue">
+                        <select class="form-control" name="venue" required>
                             <option value="" selected disabled>Please select</option>
                             <option value="San Bernardino">San Bernardino</option>
                             <option value="Los Angeles">Los Angeles</option>
@@ -63,7 +72,7 @@
                         </select>
                     <div class="form-group">
                         <label><strong>Quantity of tickets:</strong></label>
-                        <select class="form-control" name="quantity">
+                        <select class="form-control" name="quantity" required>
                             <option value="" selected disabled>Please select</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -75,7 +84,7 @@
                     </div>
                     <div class="form-group">
                         <label><strong>Hearing Loop:</strong></label>
-                        <select class="form-control" name="loop">
+                        <select class="form-control" name="loop" required>
                             <option value="" selected disabled>Please select</option>
                             <option value="Yes">Yes</option>
                             <option value="N/A">N/A</option>

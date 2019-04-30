@@ -18,6 +18,9 @@
                             <a class="nav-link" href="/tickets">Tickets</a>
                         </li>
                         <li class="nav-item active">
+                            <a class="nav-link" href="/performances">Performances</a>
+                        </li>
+                        <li class="nav-item active">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
                         <li class="nav-item active">
@@ -26,13 +29,13 @@
                     </ul>
                 </div>
         </nav>
-        <div class="background" style="background-image: url({% static 'img/laughing.jpg' %})">
+        <div class="background" style="background-image: url({% static 'img/laugh.jpeg' %})">
         <div class="container">
             <div class="jumbotron text-center">
                 <h1 class="display-3">Thank You {{user.first_name}}!</h1>
-                    <p class="lead">Your order number is:<strong>{% for o in order %}{{o.id}}{% endfor %}</strong><p class="lead">with ticket number:</p><strong>{% for ticket in tickets %}{{ticket.id}}{% endfor %}</strong>
+                <p class="lead">Your ticket number is:</p><strong>{% for ticket in tickets %}{{ticket.id}}{% endfor %}</strong>
                 <hr>
-                <p>Having trouble? <a href="mailto:kkamiya0214@gmail.com">Contact us</a></p>
+                <p>Having trouble? <a href="/contact">Contact us</a></p>
                 <p class="lead"><a class="btn btn-primary btn-sm" href="/chrisgrafil" role="button">Continue to homepage</a></p>
             </div>
         </div>  
