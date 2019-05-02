@@ -1,0 +1,87 @@
+.container{
+    padding: 80px 120px;
+}
+
+.cat {
+    
+    filter: grayscale(50%);
+    border: 10px solid transparent;
+    margin-bottom: 10px;
+    width: 70%;
+    height: 80%;
+    opacity: 0.9; 
+}
+
+.cat:hover {
+    border-color: #f1f1f1;
+}
+
+.carousel-inner img{
+    width: 100%; 
+    margin: auto;
+}
+  
+.carousel-indicators li{
+    background-color: black;
+}
+  
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; 
+    }
+}
+
+.bg-1 {
+    background: #2d2d30;
+    color: black;
+}
+.bg-1 h3 {
+    color: #fff;
+}
+.bg-1 p {
+    font-style: italic;
+}
+.list-group{
+    color: black;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 0;
+    transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+}
+.thumbnail {
+    border: white;
+}
+
+.glyphicon {
+    color: white;
+    font-size: 100px, 100px;
+}
+
+.card-deck{
+    width: 10px;
+    height: 10px;
+}
+
+.background{
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 400px;
+    
+}
+
+.fa {  
+    color: black;  
+}  
+
+  
+
+
+
