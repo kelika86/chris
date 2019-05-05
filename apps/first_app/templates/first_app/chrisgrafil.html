@@ -8,26 +8,32 @@
         <title>Chris Grafil</title>
         
     </head>
-    <body>
-        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-            <a class="navbar-brand" href="#">Chris Grafil</a>
-            <div class="collapse navbar-collapse justify-content-end" id="myNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/tickets">Tickets</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/performances">Performances</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!---end of navigation-->
+    <body data-spy="scroll" data-target="#menu">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="{%static 'img/logo.jpg' %}"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/chrisgrafil">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tickets">Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/performances">Performances</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--end of container-fluid-->
+        </nav><!---end of navigation-->
+        <br>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -35,10 +41,10 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{% static 'img/chris_one.jpg' %}" alt="chris_one" width="1200" height="700">
+                    <img class="img-responsiveness" src="{% static 'img/chris_one.jpg' %}" alt="chris_one" width="1200" height="700">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'img/left.jpg' %}" alt="chris_two" width="1200" height="700">
+                    <img class="img-responsiveness" src="{% static 'img/left.jpg' %}" alt="chris_two" width="1200" height="700">
                 </div>
             </div>
             <!--left & right controls-->
@@ -53,46 +59,53 @@
             </div>
         </div>
     <!--end of carousel-->
+        <br>
         <div class="container text-center">
             <h3>Chris Grafil</h3>
             <p><em>Heimlich Maneuver certified: Caution! Avoid consumption of foods/drinks while listening to Chris Grafil's comedy stand up as it can potentially cause you to accidently choke. </em></p>
-            <p>Chris Grafil has been an advocate for deaf/hard of hearing community; his shows offer hearing loop systems to allow hearing aid/cochlear implant users to hear comedy live again or for the first time. Below contain his newsletters for more information on his advocacy performances and hearing loop systems.</p>
+            <p>Chris Grafil has been an advocate for deaf/hard of hearing community; his shows offer hearing loop systems to allow hearing aid/cochlear implant users to hear comedy live again or for the first time. Click the links below to view newsletters for more information on his advocacy performances and hearing loop systems.</p>
+        </div>
+        <br>
             <div class="row">
             <br>
-                <div class="col-sm-4">
-                    <p class="text-center"><strong>"Hard of Hearing Comic"</strong></p><br>
-                    <a href="#demo1" data-toggle="collapse">
+                <div class="col-md-4 text-center">
+                    
+                    <a href="#demo1">
                         <img class="rounded-circle cat img-responsive" src="{% static 'img/Comic-Cure.jpg' %}"  alt="red">
                     </a>
-                    <div id="demo1" class="collapse">
+                    <div id="demo1" >
                         
-                        <a href="http://michaelthal.com/hard-of-hearing-comic-chris-grafil/?fbclid=IwAR1TKw4FURE4AO5QOiFTqvuW6RvxpR4KnFuJ_11iHOOtsBvQ6E4If8g9TEA" class="btn btn-dark btn-xs">Newsletter</a></button>
+                        <a href="http://michaelthal.com/hard-of-hearing-comic-chris-grafil/?fbclid=IwAR1TKw4FURE4AO5QOiFTqvuW6RvxpR4KnFuJ_11iHOOtsBvQ6E4If8g9TEA" class="btn btn-dark btn-xs">"Hard of Hearing Comic"</a></button>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <p class="text-center"><strong>"The Hearing Loss Californian"</strong></p><br>
-                    <a href="#demo2" data-toggle="collapse">
+                <br>
+                <div class="col-md-4 text-center">
+                    
+                    <a href="#demo2">
                         <img class="rounded-circle cat img-responsive" src="{% static 'img/pasadena_two.jpg' %}" alt="chris_two">
                     </a>
-                    <div id="demo2" class="collapse">
+                    <div id="demo2">
                         
-                        <a href="http://www.hearinglossca.org/wp/wp-content/uploads/2011/02/HLAA-CA-Summer-2016.pdf" class="btn btn-dark btn-xs">Newsletter</a></button>
+                        <a href="http://www.hearinglossca.org/wp/wp-content/uploads/2011/02/HLAA-CA-Summer-2016.pdf" class="btn btn-dark btn-xs">"The Hearing Loss Californian"</a></button>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <p class="text-center"><strong>"HotEerz"</strong></p><br>
-                    <a href="#demo3" data-toggle="collapse">
+                <div class="col-md-4 text-center">
+                    
+                    <a href="#demo3">
                         <img class="rounded-circle cat img-responsive" src="{% static 'img/icehouse_edited.jpg' %}"  alt="chris_three">
                     </a>
-                    <div id="demo3" class="collapse">
+                    <div id="demo3">
                         
-                        <a href="https://www.hoteerz.com/our-story/" class="btn btn-dark btn-xs">Newsletter</a></button>
+                        <a href="https://www.hoteerz.com/our-story/" class="btn btn-dark btn-xs">"HotEerz"</a></button>
                     </div>
                 </div>
-            </div>
+                
+            </div><!--end of row-->
         </div> <!--end of container and below is tour container-->
+        
         <div class="bg-1 bg-dark">
             <div class="container">
+                <br>  
                 <h3 class="text-center">COMEDY DATES</h3>
                 <ul class="list-group">
                     <li class="list-group-item">June <span class="badge badge-danger float-right">Sold Out!</span></li>
@@ -103,8 +116,9 @@
                 <br>
                 <div class="row text-center">
                     <div class="col-sm-4">
-                        <div class="img-thumbnail">
-                            <img src="{% static 'img/sb.jpeg' %}" class="img-responsive" alt="sanbernardinoshow" width="260" height="275">
+                        <br>
+                        <div class="img-thumbnail responsive">
+                            <img class="img-thumbnail responsive" src="{% static 'img/sb.jpeg' %}"  alt="sanbernardinoshow" width="260" height="275">
                             <h5><strong>Saturday, 10 August 2019</strong></h5>
                             <p>Ontario Improv: 4555 Mills Cir</p>
                             <p>Ontario, CA, 91764</p>
@@ -112,8 +126,9 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
+                        <br>
                         <div class="img-thumbnail">
-                            <img src="{% static 'img/losangelesshow.jpg' %}" class="img-responsive" alt="losangelesshow" width="260" height="275">
+                            <img class="img-thumbnail responsive" src="{% static 'img/losangelesshow.jpg' %}"  alt="losangelesshow" width="260" height="280">
                             <h5><strong>Saturday, 17 August 2019</strong></h5>
                             <p>The Ice House: 24 N Mentor Ave.</p>
                             <p>Pasadena, CA, 91106</p>
@@ -121,8 +136,9 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
+                        <br>
                         <div class="img-thumbnail">
-                        <img src="{% static 'img/missioninn.jpg' %}" class="img-responsive" alt="missioninn" width="260" height="275">
+                        <img class="img-thumbnail responsive" src="{% static 'img/missioninn.jpg' %}"  alt="missioninn" width="260" height="275">
                         <h5><strong>Saturday, 24 August 2019</strong></h5>
                         <p>Mission Inn: 3649 Mission Inn Ave.</p>
                         <p>Riverside, CA, 92501</p>
@@ -130,7 +146,9 @@
                     </div>
                 </div><!--end of thumbail-->
             </div><!--end of tour container-->
+            
         </div>
+        <br>
         <img src="{% static 'img/banner.jpg' %}" alt="banner"  style="width:100%">
         <br>
         <br>
@@ -149,14 +167,19 @@
                 <i class="fa fa-youtube-play" style="font-size:48px; color:white"></i>
             </a>
         </div>
-        
+        <br>
         <!--footer-->
-
+        <br>
         <footer class="bg-black small text-center text-white-50">
             <div class="container">
               Copyright &copy; chrisgrafil.com 2019
             </div>
         </footer>
+        <br>
+        <br>
+        <br>
+        
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

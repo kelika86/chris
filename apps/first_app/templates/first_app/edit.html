@@ -7,21 +7,38 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Confirmation</title>
     </head>
-    <body>
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><h3>Edit Ticket # {{ticket.id}}</h3></a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <a class="nav-link active" href="/logout">Log Out</a>
-                </ul> 
-            </div><!--end fluid container-->
-        </nav>
+    <body data-spy="scroll" data-target="#menu">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#"><img src="{%static 'img/logo.jpg' %}">Edit Ticket #{{ticket.id}}</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/chrisgrafil">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/performances">Performances</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!--end of container-fluid-->
+                </nav>
+        
         <div class="background" style="background-image: url({% static 'img/stage.jpeg' %})">
             <div class="container">
+                
                 <div class="row text-center">
                     <div class="col-sm-4">
+                        <br>
                         <div class="img-thumbnail">
                             <h4><strong>San Bernardino</strong></h4>
                             <img src="{% static 'img/sb.jpeg' %}" alt="sanbernardino" width="260" height="275">
@@ -30,7 +47,9 @@
                             <p>Ontario, CA, 91764</p>
                         </div>
                     </div>
+                    
                     <div class="col-sm-4">
+                            <br>
                         <div class="img-thumbnail">
                             <h4><strong>Los Angeles</strong></h4>
                             <img src="{% static 'img/losangelesshow.jpg' %}" alt="losangelesshow" width="260" height="275">
@@ -40,6 +59,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
+                        <br>
                         <div class="img-thumbnail">
                             <h4><strong>Riverside</strong></h4>
                             <img src="{% static 'img/missioninn.jpg' %}" alt="missioninn" width="260" height="275">

@@ -7,23 +7,42 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Dashboard</title>
     </head>
-    <body>
-        <nav class="navbar navbar-dark bg-dark">
+    <body data-spy="scroll" data-target="#menu">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><h3>Hello {{user.first_name}}!</h3></a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <a class="nav-link active" href="/logout">Log Out</a>
-                </ul> 
+                <a class="navbar-brand" href="#"><img src="{%static 'img/logo.jpg' %}">Hello {{user.first_name}}!</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/chrisgrafil">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/performances">Performances</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Log Out</a>
+                    </li>
+                </ul>
+            </div>
             </div><!--end of container-fluid-->
         </nav>
+        
         <div class="background" style="background-image: url({% static 'img/stage.jpeg' %})">
+            <br>
             <div class="container">
                 <div class="row text-center">
                     <div class="col-sm-4">
-                        <div class="img-thumbnail">
+                        <br>
+                        <div class="img-thumbnail responsive">
                             <h4><strong>San Bernardino</strong></h4>
                             <img src="{% static 'img/sb.jpeg' %}" alt="sanbernardino" width="260" height="275">
                             <h5><strong>Saturday, 10 August 2019</strong></h5>
@@ -32,7 +51,8 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="img-thumbnail">
+                        <br>
+                        <div class="img-thumbnail responsive">
                             <h4><strong>Los Angeles</strong></h4>
                             <img src="{% static 'img/losangelesshow.jpg' %}" alt="losangelesshow" width="260" height="275">
                             <h5><strong>Saturday, 17 August 2019</strong></h5>
@@ -41,7 +61,8 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="img-thumbnail">
+                        <br>
+                        <div class="img-thumbnail responsive">
                             <h4><strong>Riverside</strong></h4>
                             <img src="{% static 'img/missioninn.jpg' %}" alt="missioninn" width="260" height="275">
                             <h5><strong>Saturday, 24 August 2019</strong></h5>
@@ -87,7 +108,7 @@
                         <select class="form-control" name="loop" required>
                             <option value="" selected disabled>Please select</option>
                             <option value="Yes">Yes</option>
-                            <option value="N/A">N/A</option>
+                            <option value="No">N/A</option>
                         </select>
                         <small id="hearingloop" class="form-text text-muted">Designed for hearing aid and cochlear implant users accessibility</small>
                     </div>
