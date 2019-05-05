@@ -7,25 +7,41 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Confirmation</title>
     </head>
-    <body>
-        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-            <div class="collapse navbar-collapse justify-content-end" id="myNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/logout">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-        </nav> 
+    <body data-spy="scroll" data-target="#menu">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><img src="{%static 'img/logo.jpg' %}">Hello {{user.first_name}}!</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/chrisgrafil">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/performances">Performances</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+                </div><!--end of container-fluid-->
+            </nav>
+        
         <div class="background" style="background-image: url({% static 'img/fire.png' %})">
         <div class="container">
-            <h2>Shopping Cart</h2>
-            <table class="table table-hover table-bordered">
+            <br>
+            <h2 class="text-center">Shopping Cart</h2>
+            <br>
+            <table class="table table-hover table-bordered table-responsive-vertical">
                 <thead class="thead-light">
                     <tr class="text-center">
                         <th scope="col">Venue</th>
@@ -39,10 +55,10 @@
                     {% for ticket in tickets %}
                     <tr class="text-center">
                         <th scope="row">{{ticket.venue}}</th>
-                            <td>{{ticket.quantity}}</td>
-                            <td>$25.00 each</td>
-                            <td>{{ticket.loop}}</td>
-                            <td>${{ticket.total | floatformat:2}}</td>
+                            <td class="text-center">{{ticket.quantity}} Ticket/s</td>
+                            <td class="text-center">$25.00 each</td>
+                            <td class="text-center">{{ticket.loop}}, Hearing Loop Request</td>
+                            <td class="text-center">${{ticket.total | floatformat:2}}</td>
                     </tr>
                     <tr>
                         <th colspan="4" class="text-right">Sales Tax</th>
