@@ -1,0 +1,133 @@
+.navbar-brand img{
+    height: 2.5rem;
+    width: 3.5rem;
+}
+
+@media screen and (min-width: 320px){
+    font-size: 10px;
+}
+
+body {
+    padding-top: 60px;
+}
+
+
+.cat {
+    
+    filter: grayscale(50%);
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 50%;
+    height: 60%;
+    opacity: 0.9; 
+}
+
+.cat:hover {
+    border-color: #f1f1f1;
+}
+
+.carousel-inner img{
+    width: 100%; 
+    margin: auto;
+}
+  
+.carousel-indicators li{
+    background-color: black;
+}
+  
+
+
+.bg-1 {
+    background: #2d2d30;
+    color: black;
+}
+.bg-1 h3 {
+    color: #fff;
+}
+.bg-1 p {
+    font-style: italic;
+}
+.list-group{
+    color: black;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 0;
+    transition: .2s;
+}
+
+.btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+}
+.thumbnail {
+    border: white;
+}
+
+
+.glyphicon {
+    color: white;
+    font-size: 100px, 100px;
+}
+
+.card-deck{
+    width: 10px;
+    height: 10px;
+}
+
+.background{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 400px;
+    
+}
+
+.fa {  
+    color: black;  
+}  
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr{
+        display: block;
+        
+}
+
+thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+
+tr {
+    margin: 0 0 1rem 0;
+}
+      
+td {
+	/* Behave  like a "row" */
+	border: none;
+	border-bottom: 1px solid;
+	position: relative;
+	padding-left: 10%;
+}
+
+td:before {
+/* Now like a table header */
+	position: absolute;
+	/* Top/left values mimic padding */
+	top: 0;
+	left: 6px;
+	width: 45%;
+	padding-right: 10px;
+	white-space: nowrap;
+}
+
+
+
+
+}
+
+
+  
