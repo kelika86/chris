@@ -14,7 +14,7 @@ body {
 
 .cat {
     
-    filter: grayscale(50%);
+    
     border: 10px solid transparent;
     margin-bottom: 25px;
     width: 50%;

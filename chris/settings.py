@@ -37,7 +37,7 @@ print(os.environ.get('EMAIL_HOST_USER'))
 print(os.environ.get('EMAIL_HOST_PASSWORD'))
 print(os.environ.get('SECRET_KEY'))
 
-ALLOWED_HOSTS = ['18.222.229.253', 'www.cgrafil.com']
+ALLOWED_HOSTS = ['18.222.229.253', 'www.cgrafil.com', 'localhost']
 
 
 # Application definition
